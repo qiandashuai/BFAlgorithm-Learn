@@ -61,10 +61,7 @@ func MaxArea2(_ heights: [Int]) -> Int {
     var maxWater = (heights.count - 1) * min(heights[0], heights.last!)
     var right = heights.count - 1
     var left = 0
-    for _ in 0..<heights.count {
-        if left == right {
-            break
-        }
+    while left < right {
         if heights[left] < heights[right] {
             left = left + 1
         } else {
@@ -78,3 +75,23 @@ func MaxArea2(_ heights: [Int]) -> Int {
 
 let maxArea2 =  MaxArea2([2,3,4,5,18,17,6])
 print(maxArea2)
+
+
+// 70 climb stairs
+func climbStairs(_ n : Int) -> Int {
+    var total = 0
+    
+    if n <= 2 {
+        return n
+    }
+    
+    var (f1, f2) = (1, 2)
+    
+    for _ in 3...n  {
+        total = f1 + f2
+        f1 = f2
+        f2 = total
+    }
+    
+    return total
+}
