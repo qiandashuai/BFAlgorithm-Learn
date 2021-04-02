@@ -43,3 +43,27 @@ class Solution {
 
 }
 
+
+// Dexode XORed Array 1720
+
+/*
+ there is a hidden integer array arr that consists of n non-negative integers
+ it was encoded into another integer array encode of length n - 1, such that encode[i] = arra[i] XOR arr[i + 1]. for example if arr = [1,0,2,1]  that encoded = [1,2,3]
+ you are given the encoded array, you are also given an integer first, that is the first element of arr, ie arr[0]
+ return the origin array arr, i can be proved the answer exists and is unique.
+ */
+
+class Solution1720 {
+    func decode(_ encoded: [Int], _ first: Int) -> [Int] {
+        var result:[Int] = []
+        result.append(first)
+        for (i,item) in encoded.enumerated() {
+            print("current index is \(i)-- current item is \(item)")
+            let appendResult = result[i] ^ encoded[i]
+            result.append(appendResult)
+        }
+        return result
+    }
+}
+
+
